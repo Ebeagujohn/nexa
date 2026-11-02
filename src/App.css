@@ -1,0 +1,687 @@
+/* ==========================================================================
+   1. GLOBAL RESET & CORE CANVAS
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #0b0a0f;
+  color: #ffffff;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+.landing-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Typography Gradient Global Engine */
+.gradient-text {
+  background: linear-gradient(45deg, #a855f7, #6366f1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.section-mini-label {
+  color: #4e4c54;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  display: block;
+  margin-top: 6rem;
+  margin-bottom: -4rem;
+}
+
+.section-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 6rem;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.section-intro h2 {
+  font-size: 2.5rem;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.intro-side-text {
+  max-width: 380px;
+  color: #8e8d94;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   2. HEADER NAVIGATION FIXED
+   ========================================================================== */
+.main-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.5rem 0;
+  width: 100%;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: -0.5px;
+}
+
+.logo .dot {
+  color: #a855f7;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  color: #8e8d94;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+.nav-cta-btn {
+  background: transparent;
+  border: 1px solid #221f30;
+  color: #ffffff;
+  padding: 0.6rem 1.4rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.nav-cta-btn:hover {
+  border-color: #a855f7;
+}
+
+/* ==========================================================================
+   3. HERO SECTION SEPARATION FIXED
+   ========================================================================== */
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6rem 0;
+  gap: 4rem;
+  width: 100%;
+}
+
+.hero-content {
+  flex: 1;
+  max-width: 550px;
+}
+
+.hero-badge {
+  color: #6366f1;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.hero-content h1 {
+  font-size: 3.8rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -1px;
+}
+
+.hero-content p {
+  color: #8e8d94;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+/* FIX: Buttons spacing block container */
+.hero-buttons {
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 3.5rem;
+}
+
+.primary-btn {
+  background: #6366f1;
+  border: none;
+  color: #ffffff;
+  padding: 0.9rem 1.8rem;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.primary-btn:hover {
+  background: #4f46e5;
+}
+
+.secondary-btn {
+  background: transparent;
+  border: 1px solid #221f30;
+  color: #ffffff;
+  padding: 0.9rem 1.8rem;
+  border-radius: 25px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.hero-sub-client {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  border-top: 1px solid #16141f;
+  padding-top: 2rem;
+}
+
+.hero-sub-client h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.hero-sub-client p {
+  font-size: 0.85rem;
+  color: #5c5b66;
+}
+
+/* ==========================================================================
+   4. HERO GRAPHIC DASHBOARD CARD STACK FIXED
+   ========================================================================== */
+.hero-graphic-container {
+  flex: 1;
+  position: relative;
+  height: 420px;
+  max-width: 450px;
+}
+
+/* FIX: Internal typography rows for the main card dashboard */
+.main-floating-card {
+  background: #110f1a;
+  border: 1px solid #221f30;
+  border-radius: 20px;
+  padding: 2rem;
+  width: 300px;
+  position: absolute;
+  right: 20px;
+  top: 40px;
+  z-index: 5;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem; /* Adds balanced padding space between items inside the card */
+}
+
+.card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.pill-tag {
+  background: #1c1929;
+  padding: 0.3rem 0.7rem;
+  border-radius: 12px;
+  color: #a855f7;
+  font-weight: 600;
+}
+
+.status-dot-active {
+  color: #8e8d94;
+}
+
+.main-floating-card h3 {
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.main-floating-card p {
+  font-size: 0.85rem;
+  text-align: center;
+  color: #6c6b75;
+  line-height: 1.4;
+}
+
+.card-bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #1c1929;
+  padding-top: 1rem;
+  font-size: 0.8rem;
+  color: #5c5b66;
+}
+
+.bg-card-layer {
+  background: #0d0c14;
+  border: 1px solid #1a1824;
+  border-radius: 20px;
+  position: absolute;
+  width: 280px;
+  height: 200px;
+}
+
+.layer-one {
+  right: 60px;
+  top: 0px;
+  z-index: 2;
+  transform: rotate(-6deg);
+}
+
+.layer-two {
+  right: -10px;
+  top: 160px;
+  z-index: 3;
+  transform: rotate(5deg);
+  display: flex;
+  align-items: flex-end;
+  padding: 1.2rem;
+}
+
+/* ==========================================================================
+   5. SERVICES SECTION RESPONSIVE CARDS
+   ========================================================================== */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
+.service-card {
+  background: #12101a;
+  border: 1px solid #1e1b29;
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+  transition: border-color 0.3s;
+}
+
+.service-card:hover {
+  border-color: #312b47;
+}
+
+.service-card h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.service-card p {
+  color: #8e8d94;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.card-footer-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #1c1929;
+  padding-top: 1.5rem;
+  margin-top: auto;
+}
+
+.card-link {
+  color: #a855f7;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.action-arrow {
+  color: #4a4852;
+}
+
+/* ==========================================================================
+   6. PORTFOLIO SHOWCASE WIREFRAME STRIPS FIXED
+   ========================================================================== */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  width: 100%;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* FIX: Absolute layering engine inside project frames */
+.project-visual {
+  height: 360px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Essential to secure layout tags */
+  overflow: hidden;
+}
+
+.purple-theme .project-visual { background: #201430; border: 1px solid #362252; }
+.green-theme .project-visual { background: #0c1f17; border: 1px solid #143628; }
+
+/* FIX: Disconnecting tags from baseline into corners */
+.project-serial-tag {
+  position: absolute;
+  left: 2rem;
+  top: 2rem;
+  font-size: 0.85rem;
+  color: #ffffff;
+  opacity: 0.4;
+  font-family: monospace;
+}
+
+.visual-logo-letter {
+  font-size: 6rem;
+  font-weight: 800;
+  opacity: 0.15;
+  user-select: none;
+}
+
+.purple-theme .visual-logo-letter { color: #a855f7; opacity: 0.25; }
+.green-theme .visual-logo-letter { color: #10b981; opacity: 0.25; }
+
+.project-meta-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+}
+
+.project-category {
+  font-size: 0.75rem;
+  color: #6366f1;
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.project-meta-info h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.project-meta-info p {
+  color: #8e8d94;
+  font-size: 0.95rem;
+}
+
+.project-arrow-btn {
+  background: #12101a;
+  border: 1px solid #221f30;
+  color: #8e8d94;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.2s ease;
+}
+
+.project-card:hover .project-arrow-btn {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.portfolio-disclaimer {
+  text-align: center;
+  color: #3b3942;
+  font-size: 0.8rem;
+  margin-top: 5rem;
+}
+
+/* ==========================================================================
+   7. CALL TO ACTION & FOOTER ACCENTS
+   ========================================================================== */
+.cta-section {
+  text-align: center;
+  padding: 9rem 0;
+  width: 100%;
+}
+
+.cta-subtitle {
+  color: #6366f1;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.cta-section h2 {
+  font-size: 3.4rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 2.5rem;
+  letter-spacing: -1px;
+}
+
+.cta-btn {
+  background: #6366f1;
+  border: none;
+  color: #ffffff;
+  padding: 1rem 2.2rem;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.cta-btn:hover {
+  transform: scale(1.03);
+}
+
+.main-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3.5rem 0;
+  border-top: 1px solid #14121c;
+  color: #4f4e57;
+  font-size: 0.85rem;
+  width: 100%;
+}
+
+.footer-logo {
+  color: #8e8d94;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS (Max Width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+
+  /* ------ GLOBAL PAGE PADDING ------ */
+  .landing-page {
+    padding: 0 1.25rem; /* Slightly tighter side padding on phones */
+  }
+
+  /* ------ NAVBAR: Stack or simplify ------ */
+  .main-navbar {
+    flex-wrap: wrap;         /* Allow items to wrap to next line */
+    gap: 1rem;
+    padding: 1.5rem 0;
+  }
+
+  .nav-links {
+    display: none;           /* Hide links on mobile for now (common pattern) */
+    /* We will make a hamburger menu later if you want */
+  }
+
+  .nav-cta-btn {
+    margin-left: auto;       /* Push button to the right */
+  }
+
+  /* ------ HERO SECTION ------ */
+  .hero-section {
+    flex-direction: column;
+    padding: 3rem 0 4rem 0;
+    gap: 3rem;
+    align-items: flex-start;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-content h1 {
+    font-size: 2.4rem;       /* Prevents text overflow */
+    letter-spacing: -0.5px;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;  /* Stack buttons vertically on very small screens */
+    width: 100%;
+  }
+
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* ------ HERO GRAPHIC: The big fix for the messy cards ------ */
+  .hero-graphic-container {
+    position: relative;
+    width: 100%;
+    max-width: 320px;        /* Constrain width so it fits phones */
+    height: 380px;
+    margin: 0 auto;          /* Center the whole graphic */
+    flex: none;
+  }
+
+  .main-floating-card {
+    position: relative;      /* Change from absolute → relative so it flows normally */
+    right: auto;
+    top: auto;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+    z-index: 5;
+  }
+
+  .bg-card-layer {
+    width: 260px;
+    height: 180px;
+  }
+
+  .layer-one {
+    right: 15px;
+    top: -15px;
+    transform: rotate(-4deg);
+  }
+
+  .layer-two {
+    right: -5px;
+    top: 140px;
+    transform: rotate(3deg);
+  }
+
+  /* ------ SECTION INTROS ------ */
+  .section-intro {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-intro h2 {
+    font-size: 2rem;
+  }
+
+  .intro-side-text {
+    max-width: 100%;
+  }
+
+  .section-mini-label {
+    margin-top: 4rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* ------ SERVICES & PORTFOLIO GRIDS ------ */
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .project-visual {
+    height: 280px;           /* Slightly shorter cards on mobile */
+  }
+
+  .visual-logo-letter {
+    font-size: 4.5rem;
+  }
+
+  /* ------ CTA & FOOTER ------ */
+  .cta-section {
+    padding: 5rem 0;
+  }
+
+  .cta-section h2 {
+    font-size: 2.2rem;
+  }
+
+  .main-footer {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    padding: 2.5rem 0;
+  }
+}
